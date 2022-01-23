@@ -2,30 +2,8 @@ import React, {useContext} from 'react'
 import {Router,Link} from '@reach/router'
 import { Container, Flex, Heading, Button, NavLink } from "theme-ui";
 import { IdentityContext } from '../identity-context';
+import Dash from '../component/dashboard'
 
-const Dash = () => {
-    const {user, netlifyIdentity} = useContext(IdentityContext);
-
-    return(
-        <Container>
-            <Flex as="nav">
-            <NavLink as={Link} to="/" p={2}>Home</NavLink>
-            <NavLink as={Link} to="/app" p={2}>Dashboard</NavLink>
-            {user && (
-                 <NavLink
-                 href="#!"
-                 p={2}
-                 onClick={() => {
-                   netlifyIdentity.logout();
-                 }}
-               >
-                 Log out {user.user_metadata.full_name}
-               </NavLink>
-            )}
-            </Flex>
-        </Container>
-    )
-};
 
 const LoggedOut= () =>{
     const {netlifyIdentity} = useContext(IdentityContext);
@@ -47,14 +25,18 @@ const LoggedOut= () =>{
 
 export default () => {
     const {user} = useContext(IdentityContext);
-    if(!user)(
+    if(!user){
+        return(
         <Router>
             <LoggedOut path="/app" />
         </Router>
     )
-    return(
-        <Router>
-            <Dash path="/app"/>
-        </Router>
-    )
+        }
+        if(user){
+            return(
+                <Router>
+                    <Dash path="/app"/>
+                </Router>
+            )
+        }
 }

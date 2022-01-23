@@ -9,9 +9,11 @@ export const IdentityProvider = ({children}) => {
         netlifyIdentity.init({});
       });
     netlifyIdentity.on("login", user => {
+        netlifyIdentity.close()
         setUser(user)
     })
     netlifyIdentity.on("logout", () => {
+        netlifyIdentity.close()
         setUser()
     })
     return(

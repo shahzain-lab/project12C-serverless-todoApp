@@ -1,7 +1,8 @@
 const React = require('react');
 const { ThemeProvider } = require('theme-ui');
 const {deep} = require('@theme-ui/presets');
-const {IdentityProvider}  = require('./src/identity-context')
+const {IdentityProvider}  = require('./src/identity-context');
+
 
 
 const newTheme = {
