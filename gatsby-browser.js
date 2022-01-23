@@ -11,7 +11,7 @@ var wrapRootElement = require('./wrap-root-element');
   const client = new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
-      uri: 'https://shahzain-jamstack-serverless-todo.netlify.app/.netlify/functions/app'
+      uri: 'https://shahzain-jamstack-serverless-todo.netlify.app/.netlify/functions/todolist'
     })
   })
   
