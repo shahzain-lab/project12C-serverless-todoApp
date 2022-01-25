@@ -7,7 +7,7 @@ export default function Home() {
 
 const GET_HELLO = gql`
   {
-    hello
+    message
   }
 `
   
@@ -17,6 +17,6 @@ console.log('loading...');
 
 
  return <div> 
-   this is {data && data.hello}
+   this is {data && data.message}
   </div>
 }
